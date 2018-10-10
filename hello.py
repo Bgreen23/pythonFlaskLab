@@ -7,7 +7,7 @@ Jedi = [{'name' : 'Mace Windu'}, {'name' : 'Obi Wan Kenobi'}, {'name' : 'Ki Adi 
 def test():
     return jsonify({'message' : 'Execute Order 66'})
 
-#get request
+#GET request
 @app.route('/jedi' , methods=['GET'])
 def showall():
     return jsonify({'Jedi' : Jedi})
@@ -22,14 +22,14 @@ def add():
     Jedi.append(jedi)
     return jsonify({'jedi' : jedi})
 
-#put request
+#PUT request
 @app.route('/jedi/<string:name>', methods=['PUT'])
 def edit(name):
     jed = [jedi for jedi in Jedi if jedi['name'] == name]
     jedi[0]['names'] = request.json['name']
     return jsonify({'jedi' : jed[0]})
 
-#Delete request
+#DELETE request
 @app.route('/jedi/<string:name>', methods=['DELETE'])
 def delete(name):
     jed = [jedi for jedi in Jedi if jedi['name'] == name]
